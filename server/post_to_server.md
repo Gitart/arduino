@@ -132,12 +132,13 @@ if (_WSP2_A2) {
      if (0) { 
          if (_trgrt2I) { 
              _trgrt2 = 0;
-       }else {
+          }else {
             _trgrt2  = 1; 
-            _trgrt2I = 1;} 
+            _trgrt2I = 1;
+          } 
     } else {
-            _trgrt2  = 0; 
-            _trgrt2I = 0;
+           _trgrt2  = 0; 
+           _trgrt2I = 0;
     };
     
 if (_WSP2_A3) { 
