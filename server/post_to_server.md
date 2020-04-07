@@ -1,12 +1,10 @@
-# Управление реле на сервере
-
-```ino
 #include <Ethernet.h>
 #include <SPI.h>
 
-byte ethernet_mac [] = {0x78, 0xAC, 0xC0, 0x43, 0x7B, 0xC1};
+
 
 IPAddress ethernet_ip(192, 168, 0, 177);
+byte ethernet_mac      [] = {0x78, 0xAC, 0xC0, 0x43, 0x7B, 0xC1};
 byte ethernet_dns      [] = {192, 168, 0, 1};
 byte ethernet_gateway  [] = {192, 168, 0, 1};
 byte ethernet_subnet   [] = {255, 255, 255, 0};
@@ -51,6 +49,7 @@ void setup() {
      pinMode(9, OUTPUT);
 }
 
+
 //****************************
 // Base cycle
 //****************************
@@ -71,7 +70,7 @@ while (_tspWebServer_client.connected()){
        char _tempWebServerChar = _tspWebServer_client.read();
        
        if(_WSCIsFirsLine) {
-         _WSCReqest+= _tempWebServerChar;
+          _WSCReqest+= _tempWebServerChar;
         }
         
        if (_tempWebServerChar == '\n' && _WSCLineIsBlank) {
@@ -87,7 +86,7 @@ while (_tspWebServer_client.connected()){
             _WSCPageNumber=_parseWebServerReqest(_WSCReqest); 
             _WSCIsParse=1;} 
         } else if (_tempWebServerChar != '\r') { 
-           _WSCLineIsBlank = false;
+            _WSCLineIsBlank = false;
         }
       }
   }
@@ -102,9 +101,10 @@ if (_WSP2_A1) {
        _trgrt1  = 1; 
        _trgrt1I = 1;
     } 
+ 
  } else {
-    _trgrt1  = 0; 
-    _trgrt1I = 0;
+      _trgrt1  = 0; 
+      _trgrt1I = 0;
  };
        
 bool _tmp1 = _trgrt1;
@@ -189,74 +189,76 @@ digitalWrite(8, !(_trgt3));
 digitalWrite(9, !(_trgt4));
 }
 
+
+
 //****************************
 // Client
 //****************************
 void _sendWebServerPage(int sendPageNumber){
-_tspWebServer_client.println("HTTP/1.1 200 OK");
-_tspWebServer_client.println("Connection: close");
-_tspWebServer_client.println();
-_tspWebServer_client.println("<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"">");
-_tspWebServer_client.println("<html><head>");
-_tspWebServer_client.println("<META content=""text/html; charset=utf-8"" http-equiv=""Content-Type"">");
-_tspWebServer_client.println("</head><body>");
-
-if (sendPageNumber ==1) {
-    _sendWebServerPage1();
-}
-
-if (sendPageNumber ==2) {
-    _sendWebServerPage2();
-}
-
-  _tspWebServer_client.println("</body></html>");
-  delay(1); 
-  _tspWebServer_client.stop();
+      _tspWebServer_client.println("HTTP/1.1 200 OK");
+      _tspWebServer_client.println("Connection: close");
+      _tspWebServer_client.println();
+      _tspWebServer_client.println("<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"">");
+      _tspWebServer_client.println("<html><head>");
+      _tspWebServer_client.println("<META content=""text/html; charset=utf-8"" http-equiv=""Content-Type"">");
+      _tspWebServer_client.println("</head><body>");
+      
+      if (sendPageNumber ==1) {
+          _sendWebServerPage1();
+      }
+      
+      if (sendPageNumber ==2) {
+          _sendWebServerPage2();
+      }
+      
+        _tspWebServer_client.println("</body></html>");
+         delay(1); 
+        _tspWebServer_client.stop();
 }
 
 //****************************
 // Server request
 //****************************
 int _parseWebServerReqest(String reqestAddres) {
-int index;
-int result=0;
-index=reqestAddres.indexOf("/");
-reqestAddres = _stringWithoutCharWithIndex(reqestAddres,0,(index));
-index=reqestAddres.indexOf(" ");
-reqestAddres = _stringWithoutCharWithIndex(reqestAddres,index,(reqestAddres.length()-index));
-
-if (reqestAddres==""){
-    result= 1;
-}
-
-if (reqestAddres=="1"){
-    _WSP2_A1=1; 
-    result= 2;
-} else {
-    _WSP2_A1=0;
-}
-
-if (reqestAddres=="2"){
-    _WSP2_A2=1; 
-    result= 2;
-} else {
-    _WSP2_A2=0;
-}
-
-if (reqestAddres=="3"){
-    _WSP2_A3=1; 
-    result= 2;
- } else {
-    _WSP2_A3=0;
- }
- 
-if (reqestAddres=="4"){
-    _WSP2_A4=1; 
-    result= 2;
- } else {
-    _WSP2_A4=0;
-}
- return result;
+     int index;
+     int result=0;
+     index=reqestAddres.indexOf("/");
+     reqestAddres = _stringWithoutCharWithIndex(reqestAddres,0,(index));
+     index=reqestAddres.indexOf(" ");
+     reqestAddres = _stringWithoutCharWithIndex(reqestAddres,index,(reqestAddres.length()-index));
+     
+     if (reqestAddres==""){
+         result= 1;
+     }
+     
+     if (reqestAddres=="1"){
+         _WSP2_A1=1; 
+         result= 2;
+     } else {
+         _WSP2_A1=0;
+     }
+     
+     if (reqestAddres=="2"){
+         _WSP2_A2=1; 
+         result= 2;
+     } else {
+         _WSP2_A2=0;
+     }
+     
+     if (reqestAddres=="3"){
+         _WSP2_A3=1; 
+         result= 2;
+      } else {
+         _WSP2_A3=0;
+      }
+      
+     if (reqestAddres=="4"){
+         _WSP2_A4=1; 
+         result= 2;
+      } else {
+         _WSP2_A4=0;
+     }
+      return result;
 }
 
 
@@ -264,14 +266,14 @@ if (reqestAddres=="4"){
 // String Index
 //****************************
 String _stringWithoutCharWithIndex(String value, int index,int count){
-  String result="";
-  
-  for (int i=0; i <= value.length(); i++){
-       if  ((i<index) ||(i>(index+count))){
-           result+=value.charAt(i);
-        }
-   }
- return result;
+     String result="";
+      
+     for (int i=0; i <= value.length(); i++){
+           if  ((i<index) ||(i>(index+count))){
+               result+=value.charAt(i);
+            }
+     }
+     return result;
 }
 
 
@@ -360,4 +362,3 @@ _tspWebServer_client.println("");
 void _sendWebServerPage2(void) {
      _tspWebServer_client.println("<meta http-equiv=""refresh"" content=""0;URL=http://192.168.0.177"">");
 }
-```
