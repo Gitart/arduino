@@ -37,8 +37,9 @@ bool _trgt2I  = 0;
 bool _trgt3   = 0;
 bool _trgt3I  = 0;
 
-
+//****************************
 // Setup & init
+//****************************
 void setup() {
     Ethernet.begin(ethernet_mac, ethernet_ip, ethernet_dns, ethernet_gateway, ethernet_subnet);
     delay(1000);
@@ -50,8 +51,9 @@ void setup() {
      pinMode(9, OUTPUT);
 }
 
-
+//****************************
 // Base cycle
+//****************************
 void loop(){
 
 _tspWebServer_client = _tspWebServer.available();
@@ -187,8 +189,9 @@ digitalWrite(8, !(_trgt3));
 digitalWrite(9, !(_trgt4));
 }
 
-
+//****************************
 // Client
+//****************************
 void _sendWebServerPage(int sendPageNumber){
 _tspWebServer_client.println("HTTP/1.1 200 OK");
 _tspWebServer_client.println("Connection: close");
@@ -211,7 +214,9 @@ if (sendPageNumber ==2) {
   _tspWebServer_client.stop();
 }
 
+//****************************
 // Server request
+//****************************
 int _parseWebServerReqest(String reqestAddres) {
 int index;
 int result=0;
@@ -264,10 +269,12 @@ String _stringWithoutCharWithIndex(String value, int index,int count){
  return result;
 }
 
+//****************************
 // Start page
+//****************************
 void _sendWebServerPage1(void){
-     _tspWebServer_client.println("");
-     _tspWebServer_client.println("<table width=""100%"" height=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"" bgcolor=""FFFFFF"">");
+_tspWebServer_client.println("");
+_tspWebServer_client.println("<table width=""100%"" height=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"" bgcolor=""FFFFFF"">");
 _tspWebServer_client.println("<tr>");
 _tspWebServer_client.println("<td>");
 _tspWebServer_client.println("");
@@ -341,6 +348,9 @@ _tspWebServer_client.println("</table>");
 _tspWebServer_client.println("");
 }
 
+//****************************
+// Page server
+//****************************
 void _sendWebServerPage2(void) {
      _tspWebServer_client.println("<meta http-equiv=""refresh"" content=""0;URL=http://192.168.0.177"">");
 }
