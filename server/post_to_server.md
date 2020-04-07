@@ -77,14 +77,14 @@ while (_tspWebServer_client.connected()){
        }
 
        if (_tempWebServerChar == '\n') {
-        _WSCLineIsBlank = true; 
-        _WSCIsFirsLine=0; 
+           _WSCLineIsBlank = true; 
+           _WSCIsFirsLine=0; 
        
        if (!_WSCIsParse){ 
-             _WSCPageNumber=_parseWebServerReqest(_WSCReqest); 
-             _WSCIsParse=1;} 
+            _WSCPageNumber=_parseWebServerReqest(_WSCReqest); 
+            _WSCIsParse=1;} 
         } else if (_tempWebServerChar != '\r') { 
-          _WSCLineIsBlank = false;
+           _WSCLineIsBlank = false;
         }
       }
 }}
@@ -135,8 +135,8 @@ if (_WSP2_A2) {
          if (_trgrt2I) { 
              _trgrt2 = 0;
           }else {
-            _trgrt2  = 1; 
-            _trgrt2I = 1;
+             _trgrt2  = 1; 
+             _trgrt2I = 1;
           } 
     } else {
            _trgrt2  = 0; 
@@ -163,18 +163,19 @@ if (_tmp3) {
       if (_WSP2_A4) { 
            if (_trgrt5I) {  
                _trgrt5 = 0;
+           } else {
+               _trgrt5 = 1; 
+               _trgrt5I = 1;} 
       } else {
-            _trgrt5 = 1; 
-            _trgrt5I = 1;} 
-      } else {
-            _trgrt5 = 0; 
-            _trgrt5I = 0;
+              _trgrt5 = 0; 
+              _trgrt5I = 0;
       };
+      
 bool _tmp4 = _trgrt5;
 
 if (_tmp4) { 
-    if (! _trgt4I) _trgt4 = ! _trgt4; 
-    }
+   if (! _trgt4I) _trgt4 = ! _trgt4; 
+}
     
 _trgt4I = _tmp4;
 
@@ -208,6 +209,7 @@ if (sendPageNumber ==2) {
   _tspWebServer_client.stop();
 }
 
+// Server request
 int _parseWebServerReqest(String reqestAddres) {
 int index;
 int result=0;
@@ -248,6 +250,7 @@ if (reqestAddres=="4"){
  return result;
 }
 
+// String Index
 String _stringWithoutCharWithIndex(String value, int index,int count){
   String result="";
   
@@ -259,7 +262,7 @@ String _stringWithoutCharWithIndex(String value, int index,int count){
  return result;
 }
 
-
+// Start page
 void _sendWebServerPage1(void){
      _tspWebServer_client.println("");
      _tspWebServer_client.println("<table width=""100%"" height=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"" bgcolor=""FFFFFF"">");
