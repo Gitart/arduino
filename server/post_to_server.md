@@ -257,7 +257,9 @@ if (reqestAddres=="4"){
  return result;
 }
 
+//****************************
 // String Index
+//****************************
 String _stringWithoutCharWithIndex(String value, int index,int count){
   String result="";
   
