@@ -230,13 +230,15 @@ if (reqestAddres==""){
 }
 
 if (reqestAddres=="1"){
-    _WSP2_A1=1; result= 2;
+    _WSP2_A1=1; 
+    result= 2;
 } else {
     _WSP2_A1=0;
 }
 
 if (reqestAddres=="2"){
-    _WSP2_A2=1; result= 2;
+    _WSP2_A2=1; 
+    result= 2;
 } else {
     _WSP2_A2=0;
 }
@@ -257,6 +259,7 @@ if (reqestAddres=="4"){
  return result;
 }
 
+
 //****************************
 // String Index
 //****************************
@@ -270,6 +273,7 @@ String _stringWithoutCharWithIndex(String value, int index,int count){
    }
  return result;
 }
+
 
 //****************************
 // Start page
