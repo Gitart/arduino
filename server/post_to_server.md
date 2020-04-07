@@ -6,9 +6,9 @@
 
 byte ethernet_mac [] = {0x78, 0xAC, 0xC0, 0x43, 0x7B, 0xC1};
 
-IPAddress ethernet_ip(192, 168, 1, 177);
-byte ethernet_dns      [] = {192, 168, 1, 1};
-byte ethernet_gateway  [] = {192, 168, 1, 1};
+IPAddress ethernet_ip(192, 168, 0, 177);
+byte ethernet_dns      [] = {192, 168, 0, 1};
+byte ethernet_gateway  [] = {192, 168, 0, 1};
 byte ethernet_subnet   [] = {255, 255, 255, 0};
 
 EthernetServer _tspWebServer(80);
@@ -39,29 +39,33 @@ bool _trgt3I = 0;
 
 
 void setup() {
-Ethernet.begin(ethernet_mac, ethernet_ip, ethernet_dns, ethernet_gateway, ethernet_subnet);
-delay(1000);
-_tspWebServer.begin();
-pinMode(6, OUTPUT);
-pinMode(7, OUTPUT);
-pinMode(8, OUTPUT);
-pinMode(9, OUTPUT);
+    Ethernet.begin(ethernet_mac, ethernet_ip, ethernet_dns, ethernet_gateway, ethernet_subnet);
+    delay(1000);
+    
+    _tspWebServer.begin();
+     pinMode(6, OUTPUT);
+     pinMode(7, OUTPUT);
+     pinMode(8, OUTPUT);
+     pinMode(9, OUTPUT);
 }
 
 
+// Base cycle
 void loop(){
+
 _tspWebServer_client = _tspWebServer.available();
 
 if (_tspWebServer_client) {
      boolean _WSCLineIsBlank = true;
-     String _WSCReqest="";
-     bool _WSCIsFirsLine=1;
-     bool _WSCIsParse=0;
-     int _WSCPageNumber=0;
+     String  _WSCReqest="";
+     bool    _WSCIsFirsLine=1;
+     bool    _WSCIsParse=0;
+     int     _WSCPageNumber=0;
      
 while (_tspWebServer_client.connected()){ 
  while( _tspWebServer_client.available()){
        char _tempWebServerChar = _tspWebServer_client.read();
+       
        if(_WSCIsFirsLine) {
          _WSCReqest+= _tempWebServerChar;
         }
@@ -74,22 +78,26 @@ while (_tspWebServer_client.connected()){
        if (_tempWebServerChar == '\n') {
         _WSCLineIsBlank = true; 
         _WSCIsFirsLine=0; 
-        if (!_WSCIsParse){ 
+       
+       if (!_WSCIsParse){ 
              _WSCPageNumber=_parseWebServerReqest(_WSCReqest); 
              _WSCIsParse=1;} 
         } else if (_tempWebServerChar != '\r') { 
           _WSCLineIsBlank = false;
-       }
-}}}
+        }
+      }
+}}
 
 
 if (_WSP2_A1) { 
+   
    if (_trgrt1I) { 
        _trgrt1 = 0;
     } else {
-       _trgrt1 = 1; _trgrt1I = 1;} 
+       _trgrt1  = 1; 
+       _trgrt1I = 1;} 
     } else {
-       _trgrt1 = 0; 
+       _trgrt1  = 0; 
        _trgrt1I = 0;
    };
        
@@ -98,46 +106,48 @@ bool _tmp1 = _trgrt1;
 if (_tmp1) { 
    if (! _trgt1I) _trgt1 = ! _trgt1; 
 }
+
 _trgt1I = _tmp1;
 
 if (_WSP2_A2) { 
     if (_trgrt3I) { 
         _trgrt3 = 0;
-      } else {
-      _trgrt3 = 1; 
-      _trgrt3I = 1;} 
+     } else {
+       _trgrt3  = 1; 
+       _trgrt3I = 1;} 
     } else {
-    _trgrt3 = 0; 
-    _trgrt3I = 0;
+       _trgrt3  = 0; 
+       _trgrt3I = 0;
   };
    
  bool _tmp2 = _trgrt3;
 
    if (_tmp2) { 
         if (! _trgt2I) 
-            _trgt2 = ! _trgt2; 
+              _trgt2 = ! _trgt2; 
         }
+        
         _trgt2I = _tmp2;
         
      if (0) { 
-          if (_trgrt2I) { 
-              _trgrt2 = 0;
+         if (_trgrt2I) { 
+             _trgrt2 = 0;
        }else {
-       _trgrt2 = 1; 
-       _trgrt2I = 1;} 
+            _trgrt2  = 1; 
+            _trgrt2I = 1;} 
     } else {
-       _trgrt2 = 0; 
-       _trgrt2I = 0;
+            _trgrt2  = 0; 
+            _trgrt2I = 0;
     };
     
 if (_WSP2_A3) { 
     if (_trgrt4I) { 
         _trgrt4 = 0;
 } else {
-   _trgrt4 = 1; 
+   _trgrt4  = 1; 
    _trgrt4I = 1;} 
  } else {
-   _trgrt4 = 0; 
+   _trgrt4  = 0; 
    _trgrt4I = 0;
 };
 
@@ -164,6 +174,7 @@ if (_tmp4) {
     }
     
 _trgt4I = _tmp4;
+
 digitalWrite(6, !(_trgt1));
 digitalWrite(7, !(_trgt2));
 digitalWrite(8, !(_trgt3));
@@ -171,6 +182,7 @@ digitalWrite(9, !(_trgt4));
 }
 
 
+// Client
 void _sendWebServerPage(int sendPageNumber){
 _tspWebServer_client.println("HTTP/1.1 200 OK");
 _tspWebServer_client.println("Connection: close");
@@ -179,6 +191,7 @@ _tspWebServer_client.println("<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01 Tran
 _tspWebServer_client.println("<html><head>");
 _tspWebServer_client.println("<META content=""text/html; charset=utf-8"" http-equiv=""Content-Type"">");
 _tspWebServer_client.println("</head><body>");
+
 if (sendPageNumber ==1) {
     _sendWebServerPage1();
 }
@@ -187,19 +200,19 @@ if (sendPageNumber ==2) {
     _sendWebServerPage2();
 }
 
-_tspWebServer_client.println("</body></html>");
-
-delay(1); 
-_tspWebServer_client.stop();
+  _tspWebServer_client.println("</body></html>");
+  delay(1); 
+  _tspWebServer_client.stop();
 }
 
 int _parseWebServerReqest(String reqestAddres) {
 int index;
 int result=0;
 index=reqestAddres.indexOf("/");
-reqestAddres =_stringWithoutCharWithIndex(reqestAddres,0,(index));
+reqestAddres = _stringWithoutCharWithIndex(reqestAddres,0,(index));
 index=reqestAddres.indexOf(" ");
-reqestAddres =_stringWithoutCharWithIndex(reqestAddres,index,(reqestAddres.length()-index));
+reqestAddres = _stringWithoutCharWithIndex(reqestAddres,index,(reqestAddres.length()-index));
+
 if (reqestAddres==""){
     result= 1;
 }
