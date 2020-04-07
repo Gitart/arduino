@@ -288,7 +288,7 @@ _tspWebServer_client.println("<tr>");
 _tspWebServer_client.println("<td>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
-_tspWebServer_client.println("<p><a href=""http://192.168.1.177/1""><button>Реле 1</button></a></p>");
+_tspWebServer_client.println("<p><a href=""http://192.168.0.177/1""><button>Реле 1</button></a></p>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("</td>");
@@ -296,7 +296,7 @@ _tspWebServer_client.println("");
 _tspWebServer_client.println("<td>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
-_tspWebServer_client.println("<p><a href=""""http://192.168.1.177/2""><button>Реле 2</button></a></p>");
+_tspWebServer_client.println("<p><a href=""""http://192.168.0.177/2""><button>Реле 2</button></a></p>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("</td>");
@@ -304,7 +304,7 @@ _tspWebServer_client.println("");
 _tspWebServer_client.println("<td>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
-_tspWebServer_client.println("<p><a href=""""http://192.168.1.177/3""><button>Реле 3</button></a></p>");
+_tspWebServer_client.println("<p><a href=""""http://192.168.0.177/3""><button>Реле 3</button></a></p>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("</td>");
@@ -312,7 +312,7 @@ _tspWebServer_client.println("");
 _tspWebServer_client.println("<td>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
-_tspWebServer_client.println("<p><a href=""""http://192.168.1.177/4""><button>Реле 4</button></a></p>");
+_tspWebServer_client.println("<p><a href=""""http://192.168.0.177/4""><button>Реле 4</button></a></p>");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("");
 _tspWebServer_client.println("</td>");
@@ -337,6 +337,6 @@ _tspWebServer_client.println("");
 }
 
 void _sendWebServerPage2(void) {
-     _tspWebServer_client.println("<meta http-equiv=""refresh"" content=""0;URL=http://192.168.1.177"">");
+     _tspWebServer_client.println("<meta http-equiv=""refresh"" content=""0;URL=http://192.168.0.177"">");
 }
 ```
