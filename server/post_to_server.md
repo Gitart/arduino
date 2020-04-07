@@ -57,14 +57,15 @@ void loop(){
 _tspWebServer_client = _tspWebServer.available();
 
 if (_tspWebServer_client) {
+
      boolean _WSCLineIsBlank = true;
-     String  _WSCReqest="";
-     bool    _WSCIsFirsLine=1;
-     bool    _WSCIsParse=0;
-     int     _WSCPageNumber=0;
+     String  _WSCReqest      = "";
+     bool    _WSCIsFirsLine  = 1;
+     bool    _WSCIsParse     = 0;
+     int     _WSCPageNumber  = 0;
      
 while (_tspWebServer_client.connected()){ 
- while( _tspWebServer_client.available()){
+  while( _tspWebServer_client.available()){
        char _tempWebServerChar = _tspWebServer_client.read();
        
        if(_WSCIsFirsLine) {
@@ -87,7 +88,8 @@ while (_tspWebServer_client.connected()){
            _WSCLineIsBlank = false;
         }
       }
-}}
+  }
+}
 
 
 if (_WSP2_A1) { 
