@@ -14,30 +14,31 @@ byte ethernet_subnet   [] = {255, 255, 255, 0};
 EthernetServer _tspWebServer(80);
 EthernetClient _tspWebServer_client;
 
-bool _trgt4 = 0;
-bool _trgt4I = 0;
-bool _trgrt1 = 0;
+bool _trgt4   = 0;
+bool _trgt4I  = 0;
+bool _trgrt1  = 0;
 bool _trgrt1I = 0;
-bool _trgrt2 = 0;
+bool _trgrt2  = 0;
 bool _trgrt2I = 0;
-bool _trgrt3 = 0;
+bool _trgrt3  = 0;
 bool _trgrt3I = 0;
-bool _trgrt4 = 0;
+bool _trgrt4  = 0;
 bool _trgrt4I = 0;
-bool _trgrt5 = 0;
+bool _trgrt5  = 0;
 bool _trgrt5I = 0;
-bool _trgt1 = 0;
-bool _trgt1I = 0;
+bool _trgt1   = 0;
+bool _trgt1I  = 0;
 bool _WSP2_A1 = 0;
 bool _WSP2_A2 = 0;
 bool _WSP2_A3 = 0;
 bool _WSP2_A4 = 0;
-bool _trgt2 = 0;
-bool _trgt2I = 0;
-bool _trgt3 = 0;
-bool _trgt3I = 0;
+bool _trgt2   = 0;
+bool _trgt2I  = 0;
+bool _trgt3   = 0;
+bool _trgt3I  = 0;
 
 
+// Setup & init
 void setup() {
     Ethernet.begin(ethernet_mac, ethernet_ip, ethernet_dns, ethernet_gateway, ethernet_subnet);
     delay(1000);
@@ -95,11 +96,12 @@ if (_WSP2_A1) {
        _trgrt1 = 0;
     } else {
        _trgrt1  = 1; 
-       _trgrt1I = 1;} 
-    } else {
-       _trgrt1  = 0; 
-       _trgrt1I = 0;
-   };
+       _trgrt1I = 1;
+    } 
+ } else {
+    _trgrt1  = 0; 
+    _trgrt1I = 0;
+ };
        
 bool _tmp1 = _trgrt1;
 
