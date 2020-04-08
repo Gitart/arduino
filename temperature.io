@@ -1,3 +1,6 @@
+    // https://arduinomaster.ru/datchiki-arduino/datchiki-temperatury-i-vlazhnosti-dht11-dht22/
+    
+    
     #include "DHT.h"
     #define DHTPIN 7 // Тот самый номер пина, о котором упоминалось выше
     // Одна из следующих строк закоментирована. Снимите комментарий, если подключаете датчик DHT11 к arduino
