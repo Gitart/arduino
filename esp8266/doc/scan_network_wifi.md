@@ -1,4 +1,4 @@
-## Scan FIWI nets
+## Scan WIFI networks
 
 ```ino
 #include "ESP8266WiFi.h"
