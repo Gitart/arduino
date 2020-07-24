@@ -1,27 +1,29 @@
           
-Группа ВК: https://vk.com/electronics_in_camera
-Инстаграм: https://www.instagram.com/electronics...
+Группа ВК: https://vk.com/electronics_in_camera   
+Инстаграм: https://www.instagram.com/electronics...   
 
-Рекомендую ресурсы по SoC esp8266: 
-http://www.esp8266.com/
-http://esp8266.ru/
+Рекомендую ресурсы по SoC esp8266:        
+http://www.esp8266.com/            
+http://esp8266.ru/               
 
-Всё в куче (документация, прошивки, SDK):
-http://esp8266.ru/downloads/
+Всё в куче (документация, прошивки, SDK):            
+http://esp8266.ru/downloads/               
 
-Среда разработки для сборки прошивок для ESP8266 (если вы хотите собирать нативные прошивки на c/c++):
-Сайт проекта Unofficial Development Kit for Espressif ESP8266: http://programs74.ru/udkew-en.html
-Репозиторий Unofficial Development Kit: 
+Среда разработки для сборки прошивок для ESP8266 (если вы хотите собирать нативные прошивки на c/c++):                 
+Сайт проекта Unofficial Development Kit for Espressif ESP8266: http://programs74.ru/udkew-en.html                     
+
+Репозиторий Unofficial Development Kit:        
 https://github.com/CHERTS/esp8266-devkit
-Инструкция по разворачиванию среды разработки под Windows:
-http://geektimes.ru/post/241842/#Espr...
+
+Инструкция по разворачиванию среды разработки под Windows:             
+http://geektimes.ru/post/241842/#Espr...                
 
 Примеры прошивок от Espressif Systems:
-http://espressif.com/en/support/downl...
+http://espressif.com/en/support/downl...               
 
 Работа с модулем из Arduino IDE:
-Описание: http://esp8266.ru/arduino-ide-esp8266/
-Исходники проекта: https://github.com/esp8266/Arduino/
+Описание: http://esp8266.ru/arduino-ide-esp8266/            
+Исходники проекта: https://github.com/esp8266/Arduino/                   
 
 Альтернатива (разработка на C++) с arduino-подобным доступом к GPIO - прошивка Sming: 
 Описание: http://esp8266.ru/forum/threads/sming...
