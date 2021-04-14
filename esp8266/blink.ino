@@ -1,8 +1,10 @@
-int led1 = D0; // กำหนดขาใช้งาน
+// https://www.myarduino.net/article/143/%E0%B8%AA%E0%B8%AD%E0%B8%99%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99-nodemcu-esp8266-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%81%E0%B8%A3%E0%B8%A1-serial-%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%97%E0%B8%B5%E0%B9%88-nodemcu-%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C
+
+int led1 = D0; 
 int val = 1;
 void setup()
 {
-  pinMode(led1, OUTPUT); // กำหนดขาทำหน้าที่ให้ขา D0 เป็น OUTPUT
+  pinMode(led1, OUTPUT); // D0 OUTPUT
   Serial.begin(9600);
   Serial.println("My arduino.net");
 }
